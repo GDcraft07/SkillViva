@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+
+{% block css %}
+<link href="{{ url_for('static', filename='css/main_screen_style.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block right_button %}
+    <div class="right_buttons">
+        <h3>
+            <a href="/new_post" class="head_link">
+                Написать пост
+            </a>
+        </h3>
+    </div>
+{% endblock %}
+
+{% block left_button %}
+    <div class="left_buttons">
+        {% if current_user.nickname %}
+            <a href="/profile/{{ current_user.nickname }}">
+                <img src="../static/img/img_profile.png" alt="Что-то пошло не так(" class="img_profile">
+            </a>
+        {% else %}
+            <h3>
+                <a href="/registrate" class="head_link">
+                    Регистрация
+                </a>
+            </h3>
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="main_screen">
+
+        <!-- FILTER -->
+        <form method="post" class="filter">
+            <div class="header">
+                <h2>Фильтр</h2>
+            </div>
+            <div class="check_box_filter">
+                <div class="check_box">
+                    <input class="form-check-input" type="checkbox" value=1 id="programmer" name="filters">
+                    <label class="form-check-label" for="programmer">
+                        Программирование
+                    </label>
+                </div>
+                <div class="check_box">
+                    <input class="form-check-input" type="checkbox" value=2 id="design" name="filters">
+                    <label class="form-check-label" for="design">
+                        Дизайн
+                    </label>
+                </div>
+                <div class="check_box">
+                    <input class="form-check-input" type="checkbox" value=3 id="english" name="filters">
+                    <label class="form-check-label" for="english">
+                        Английский язык
+                    </label>
+                </div>
+                <div class="check_box">
+                    <input class="form-check-input" type="checkbox" value=4 id="science" name="filters">
+                    <label class="form-check-label" for="science">
+                        Наука
+                    </label>
+                </div>
+                <div class="check_box">
+                    <input class="form-check-input" type="checkbox" value=5 id="finance" name="filters">
+                    <label class="form-check-label" for="finance">
+                        Финансы
+                    </label>
+                </div>
+                <div class="check_box">
+                    <input class="form-check-input" type="checkbox" value=6 id="marketing" name="filters">
+                    <label class="form-check-label" for="marketing">
+                        Маркетинг
+                    </label>
+                </div>
+                <div class="check_box">
+                    <input class="form-check-input" type="checkbox" value=7 id="jurisprudence" name="filters">
+                    <label class="form-check-label" for="jurisprudence">
+                        Юриспруденция
+                    </label>
+                </div>
+            </div>
+            <input type="submit" class="filter_button" value="Применить">
+        </form>
+
+        <!-- CONTENT -->
+        <div class="contents">
+            {% for post in posts %}
+                {% set topic = post.category_id %}
+
+                {% if topic == 1 %}
+                    {% set img_name = "programming.png" %}
+
+                {% elif topic == 2 %}
+                    {% set img_name = "design.png" %}
+
+                {% elif topic == 3 %}
+                    {% set img_name = "english_language.png" %}
+
+                {% elif topic == 4 %}
+                    {% set img_name = "science.png" %}
+
+                {% elif topic == 5 %}
+                    {% set img_name = "finance.png" %}
+
+                {% elif topic == 6 %}
+                    {% set img_name = "marketing.png" %}
+
+                {% elif topic == 7 %}
+                    {% set img_name = "jurisprudence.png" %}
+
+                {% endif %}
+
+                <div class="block_post">
+                    <div class="header">
+                        <h3>
+                            <a href="/posts/{{ post.id }}" class="link">
+                                {{ post.heading }}
+                            </a>
+                        </h3>
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <h4>
+                                <a href="/profile/{{ post.user.nickname }}" class="link">
+                                    {{ post.user.nickname }}
+                                </a>
+                            </h4>
+                        </div>
+                        <div class="topic">
+                            <img src="../static/img/{{ img_name }}" alt="Что-то пошло не так(">
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

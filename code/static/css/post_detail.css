@@ -1,0 +1,28 @@
+.post_title {
+    padding-bottom: 8px;
+    text-align: center;
+}
+
+.post_content {
+    margin-top: 1%;
+    width: 60%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 25px;
+    border: 2px solid gray;
+    border-radius: 10px;
+    
+}
+
+pre {
+    white-space: pre-wrap;       /* css-3 */
+    white-space: -moz-pre-wrap;  /* Mozilla, с 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ поддерживается в IE, Safari, и Firefox 3.1.*/
+}
+
+.post_author {
+    margin-left: 15%;
+    margin-top: 1%;
+}

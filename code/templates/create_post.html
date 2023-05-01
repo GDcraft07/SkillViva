@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block css %}
+<link href="{{ url_for('static', filename='css/add_post.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block right_button %}
+    <div class="right_buttons">
+        <h3>
+            <a href="/new_post" class="head_link">
+                Написать пост
+            </a>
+        </h3>
+    </div>
+{% endblock %}
+
+{% block left_button %}
+    <div class="left_buttons">
+        <a href="/profile/{{ current_user.nickname }}" class="head_link" id="link_with_img">
+            <img src="../static/img/img_profile.png" alt="Что-то пошло не так(" class="img_profile">
+        </a>
+    </div>
+{% endblock %}
+
+{% block content %}
+<h1 class="text-center">Создание поста</h1>
+<div class="add-post">
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+
+        <!-- CATEGORY -->
+        <p>
+            {{ form.category.label }}
+            {{ form.category(class_='form-control') }}
+        </p>
+
+        <!-- HEADING -->
+        <p>
+            {{ form.heading.label }}
+            {{ form.heading(class_='form-control') }}
+            {% for error in form.heading.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endfor %}
+        </p>
+
+        <!-- CONTENT -->
+        <p>
+            {{ form.content.label }}
+            {{ form.content(class_='form-control') }}
+            {% for error in form.content.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endfor %}
+        </p>
+        
+        <p>
+            {{ message }}
+        </p>
+
+        <!-- SUBMIT -->
+        <p>
+            {{ form.submit(type='submit', class_='btn btn-dark') }}
+        </p>
+    </form>
+</div>
+{% endblock %}

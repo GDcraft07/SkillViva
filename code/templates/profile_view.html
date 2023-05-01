@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block css %}
+<link href="{{ url_for('static', filename='css/profile_view.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <div class="nickname">
+        <h3>{{ user.nickname }}</h3>
+        {% if current_user.id == user.id %}
+            <div class="text-center">
+                <a href="/logout">
+                    <img src="../static/img/logout.png">
+                </a>
+            </div>
+        {% endif %}
+    </div>
+    <br>
+    <!-- SAME CODE AS /POSTS HAS -->
+    <div class="contents">
+        {% if user.posts %}
+            {% for post in posts %}
+                {% set published = post.published.date() %}
+                {% set topic = post.category_id %}
+
+                {% if topic == 1 %}
+                    {% set img_name = "programming.png" %}
+
+                {% elif topic == 2 %}
+                    {% set img_name = "design.png" %}
+
+                {% elif topic == 3 %}
+                    {% set img_name = "english_language.png" %}
+
+                {% elif topic == 4 %}
+                    {% set img_name = "science.png" %}
+
+                {% elif topic == 5 %}
+                    {% set img_name = "finance.png" %}
+
+                {% elif topic == 6 %}
+                    {% set img_name = "marketing.png" %}
+
+                {% elif topic == 7 %}
+                    {% set img_name = "jurisprudence.png" %}
+
+                {% endif %}
+
+                <div class="block_post">
+                        <div class="header">
+                            <h3>
+                                <a href="/posts/{{ post.id }}" class="link">
+                                    {{ post.heading }}
+                                </a>
+                            </h3>
+                        </div>
+                        <div class="info">
+                            <div class="published">
+                                <h4>
+                                    {{ published }}
+                                </h4>
+                            </div>
+                            <div class="topic">
+                                <img src="../static/img/{{ img_name }}" alt="Что-то пошло не так(">
+                            </div>
+                        </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p class="nickname"> У этого пользователя совсем нет постов...</p>
+        {% endif %}
+    </div>
+{% endblock %}

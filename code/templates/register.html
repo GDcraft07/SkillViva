@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block css %}
+<link href="{{ url_for('static', filename='css/login.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block right_button %}
+    <div class="right_buttons">
+        <h3>
+            <a href="/new_post" class="head_link">
+                Написать пост
+            </a>
+        </h3>
+    </div>
+{% endblock %}
+
+{% block left_button %}
+    <div class="left_buttons">
+        <h3>
+            <a href="/login" class="head_link">
+                Войти
+            </a>
+        </h3>
+    </div>
+{% endblock %}
+
+{% block content %}
+<h1 class="text-center">Регистрация</h1>
+<div class="login-container">
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <!-- Login -->
+        <p>
+            {{ form.nickname.label }}
+            {{ form.nickname(class='form-control') }}<br>
+            {% for error in form.nickname.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endfor %}
+        </p>
+
+        <!-- Email -->
+        <p>
+            {{ form.email.label }}
+            {{ form.email(class='form-control') }}<br>
+            {% for error in form.email.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endfor %}
+        </p>
+
+        <!-- Password -->
+        <p>
+            {{ form.password.label }}
+            {{ form.password(class='form-control', type='password') }}<br>
+            {% for error in form.password.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endfor %}
+        </p>
+
+        <!-- Password Again -->
+        <p>
+            {{ form.password_again.label }}
+            {{ form.password_again(class='form-control', type='password') }}<br>
+            {% for error in form.password_again.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endfor %}
+        </p>
+
+        <!-- Submit -->
+        <p>
+            {{ form.submit(type='submit', class='btn btn-dark') }}
+        </p>
+
+        {{ message }}
+
+    </form>
+</div>
+{% endblock %}

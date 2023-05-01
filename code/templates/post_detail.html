@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block css %}
+<link href="{{ url_for('static', filename='css/post_detail.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block right_button %}
+    <div class="right_buttons">
+        <h3>
+            <a href="/new_post" class="head_link">
+                Написать пост
+            </a>
+        </h3>
+    </div>
+{% endblock %}
+
+{% block left_button %}
+    <div class="left_buttons">
+        {% if current_user.nickname %}
+            <a href="/profile/{{ current_user.nickname }}">
+                <img src="../static/img/img_profile.png" alt="Что-то пошло не так(" class="img_profile">
+            </a>
+        {% else %}
+            <h3>
+                <a href="/registrate" class="head_link">
+                    Регистрация
+                </a>
+            </h3>
+        {% endif %}
+    </div>
+{% endblock %}
+
+
+{% block content %}
+    <div class="post-detail">
+        <div class="post_title">
+            <h2>{{ post.heading }}</h2>
+        </div>
+
+        <div class="post_content">
+            <p>
+                <pre>{{ post.content}}</pre>
+            </p>
+        </div>
+        <div class="post_author">
+            <h4>
+                    Автор: <a href="/profile/{{ post.user.nickname }}" class="link">{{ post.user.nickname }}</a>
+            </h4>
+        </div>
+
+        <!--  EDIT BUTTON -->
+        <div class="text-center">
+            {% if post.user.id == current_user.id %}
+                <img src="../static/img/edit.png">
+                <h4>
+                    <a href="/edit_post/{{ post.id }}" class="link">
+                        Редактировать
+                    </a>
+                </h4>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

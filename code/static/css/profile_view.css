@@ -1,0 +1,42 @@
+.nickname {
+    text-align: center;
+    color: black;
+}
+
+.contents {
+  float: center;
+  width: 68%;
+  min-height: 40vh;
+  margin: 0 auto;
+}
+
+.block_post {
+    margin: 0 auto;
+    width: 85%;
+    border: 2px solid grey;
+    margin-top: 20px;
+    border-radius: 19px;
+    transform: translateY(45%);
+    height: 40%;
+}
+
+.header {
+    text-align: center;
+    color: black;
+}
+
+.info {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.5%;
+}
+
+.published {
+    padding-left: 5%;
+}
+
+.topic {
+    display: inline;
+    float: right;
+    padding-right: 5%;
+}

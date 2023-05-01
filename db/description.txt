@@ -1,0 +1,3 @@
+users: id, nickname, email, hashed_password, post_ids;
+
+posts: id, user_id, heading, content, published;

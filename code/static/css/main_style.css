@@ -1,0 +1,86 @@
+.custom-navbar {
+    padding: 1% 0 1% 0;
+    margin-bottom: 30px;
+    background-color: black;
+    color: white;
+}
+
+html, body {
+	height: 100%;
+}
+
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	min-height: 100%;
+}
+
+.content {
+	flex: 1 0 auto;
+	clear: both;
+}
+
+.footer {
+	flex: 0 0 auto;
+	background-color: black;
+	color: white;
+	padding: 10vh 10vh;
+	padding-bottom: 5%;
+    margin: 10vh 0 0 0;
+}
+
+.custom-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left_buttons {
+    margin-right: 2%;
+}
+
+.right_buttons {
+    margin-left: 2%;
+}
+
+.head_link {
+    text-decoration: none;
+    color: white;
+    transition: .3s;
+    background: linear-gradient(to right, white, white, white, white);
+    background-size: 0 3px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+}
+
+.head_link:hover {
+   background-size: 100% 4px;
+}
+
+.link {
+    text-decoration: none;
+    color: black;
+    transition: .3s;
+    background: linear-gradient(to right, black, black, black, black);
+    background-size: 0 3px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+}
+
+.link:hover {
+   background-size: 100% 3px;
+}
+
+.github_url {
+    both: clear;
+}
+
+.niobo {
+    float: left;
+    margin-right: 10%;
+}
+
+.GDcraft {
+    float: right;
+    margin-left: 10%;
+}
