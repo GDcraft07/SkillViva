@@ -10,7 +10,7 @@ class TextMatching:
     def matching(self):
         apikey = self.api_key
         openai.api_key = apikey
-        promt = f"Соответствует ли данный текст: {self.user_text}. Теме: {self.topic}. Ответь да или нет."
+        promt = f"Соответствует ли данный текст: {self.user_text}. Теме: {self.topic}. Ответь точно да или нет."
 
         response = openai.Completion.create(
             model="text-davinci-003",
