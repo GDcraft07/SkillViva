@@ -166,7 +166,7 @@ def create_post():
             category_id=category_id
         )
         # current_user.posts.append(new_post) - вот так вот не работает
-        # (sqlalchemy.orm.exc.DetachedInstanceError)
+        # sqlalchemy.orm.exc.DetachedInstanceError
 
         db_sess.add(new_post)
         db_sess.commit()
