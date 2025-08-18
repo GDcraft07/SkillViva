@@ -1,6 +1,6 @@
 <h1>Link</h1>
 
-https://skills-viva.glitch.me/posts
+https://skills-viva.glitch.me/posts - не работает сейчас(
 
 <h2>SkillViva</h2>
 
